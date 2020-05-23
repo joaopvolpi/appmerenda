@@ -44,7 +44,7 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SERIALIZERS':{
         'user_create': 'api.serializers.UserCreateSerializer',
-        'user': 'api.serializers.UserCreateSerializer',
+        'user': 'api.serializers.FullUserSerializer',
     },
     'SET_PASSWORD_RETYPE': True, 
     'PASSWORD_RESET_CONFIRM_URL': 'api/password/reset/confirm/{uid}/{token}',

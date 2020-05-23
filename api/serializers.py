@@ -9,8 +9,21 @@ from djoser.conf import settings
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ['email', 'first_name', 'last_name', 'tel', 'foto_rosto', 'foto_frente', 'foto_tras', 'quero_doar']
+        fields = ['email', 'first_name', 'last_name', 'tel', 'foto_rosto', 'foto_frente', 'foto_tras', 'quero_doar', 'endereco']
+
+class FullUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ['password', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'groups', 'user_permissions']
+
+class MiniUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'tel', 'endereco']
 
 
-
-
+class MarmitaSerializer(serializers.ModelSerializer):
+    usuario = MiniUserSerializer(read_only=True)
+    class Meta:
+        model = Marmita
+        exclude = ['solicitacoes']
