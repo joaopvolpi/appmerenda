@@ -8,6 +8,10 @@ from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 User = get_user_model()
 from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
+'''
+class Solicitacao(APIView):
+    def get(self, request, pk):
+        marmita = Marmita.objects.get
 
-
-
+'''
