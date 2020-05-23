@@ -23,7 +23,7 @@ class MarmitaList(generics.ListCreateAPIView):
         return Response(serializer.data)
 
     def get_queryset(self):
-        return Marmita.objects.all()
+        return Marmita.objects.filter(solicitada=False)
 
 
 class MarmitaDetail(generics.RetrieveDestroyAPIView):

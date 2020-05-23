@@ -26,4 +26,11 @@ class MarmitaSerializer(serializers.ModelSerializer):
     usuario = MiniUserSerializer(read_only=True)
     class Meta:
         model = Marmita
-        exclude = ['solicitacoes']
+        exclude = ['solicitacao', 'solicitada']
+
+class MarmitaProntaSerializer(serializers.ModelSerializer):
+    solicitacao = MiniUserSerializer(read_only=True)
+    
+    class Meta:
+        model = Marmita
+        exclude = ['usuario', 'solicitada']

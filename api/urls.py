@@ -13,5 +13,7 @@ urlpatterns = [
     path('naovalidados/<int:pk>/', UserDetail.as_view()),
     path('marmitas/', MarmitaList.as_view()),
     path('marmitas/<int:pk>/', MarmitaDetail.as_view()),
-    
+    path('marmitas/<int:pk>/solicitar/', SolicitacaoView.as_view()),
+    path('minhas_solicitacoes/', ListaSolicitacaoView.as_view()),
+    path('solicitaram_minha_marmita/', PessoasQueSolicitaramMinhaMarmitaView.as_view()),
 ]

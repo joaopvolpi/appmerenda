@@ -6,20 +6,15 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import UserManager
-'''
-class Endereco(models.Model):
-    bairro = models.CharField(max_length=200)
-    rua = models.CharField(max_length=300)
-    numero = models.IntegerField(default=False)
-    apart = models.IntegerField(default=False)
-'''
+
 class Marmita(models.Model):
     nome = models.CharField(max_length=100)
     ingredientes = models.CharField(max_length=400)
     observacoes = models.CharField(max_length=400)
     usuario = models.ForeignKey('api.User', related_name='usuario', on_delete=models.CASCADE)
 
-    solicitacoes = models.ManyToManyField('api.User', related_name="solicitacoes")
+    solicitada = models.BooleanField(default=False)
+    solicitacao = models.ForeignKey('api.User', related_name="solicitacao", on_delete=models.CASCADE, blank=True, null=True)
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
@@ -35,8 +30,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     endereco = models.CharField(_('endereco'), max_length=200, blank=True)
     quero_doar = models.BooleanField(default=False)
     validado = models.BooleanField(default=False)
-
-    #endereco = models.OneToOneField(Endereco, on_delete=models.CASCADE)
 
     objects = UserManager()
 
