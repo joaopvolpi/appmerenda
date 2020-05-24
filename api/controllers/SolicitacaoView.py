@@ -9,23 +9,23 @@ User = get_user_model()
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from datetime import date
+#from datetime import date
 
 class SolicitacaoView(APIView):
 
     def post(self, request, pk):
-        
+        '''
         marmitas_ja_solicitadas = Marmita.objects.filter(solicitacao=request.user)
         for marmitex in marmitas_ja_solicitadas:
-            if marmitex.hora_solicitacao==str(date.today()):
+            if marmitex.hora_solicitacao==date.today():
                 return Response(data={ "message": "Você já solicitou uma marmita hoje!" }, status=status.HTTP_200_OK)
-
+        '''
         marmita = get_object_or_404(Marmita, pk=pk)
 
         if marmita.solicitacao==request.user:
             return Response(data={ "message": "Solicitação já  foi enviada!" }, status=status.HTTP_200_OK)
         else:
-            Marmita.objects.filter(pk=pk).update(solicitacao=request.user, solicitada=True, hora_solicitacao=str(date.today()))
+            Marmita.objects.filter(pk=pk).update(solicitacao=request.user, solicitada=True)  #, hora_solicitacao=date.today()
             return Response(data={ "message": "Marmita solicitada!" }, status=status.HTTP_200_OK)
 
 class ListaSolicitacaoView(APIView):
