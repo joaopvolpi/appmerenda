@@ -15,7 +15,7 @@ class Marmita(models.Model):
 
     solicitada = models.BooleanField(default=False)
     solicitacao = models.ForeignKey('api.User', related_name="solicitacao", on_delete=models.CASCADE, blank=True, null=True)
-    hora_solicitacao = models.DateField(auto_now=False, blank=True, null=True)
+    hora_solicitacao = models.DateField(auto_now=True, blank=True, null=True)
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
