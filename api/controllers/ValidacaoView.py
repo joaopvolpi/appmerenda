@@ -29,6 +29,6 @@ class UserDetail(generics.RetrieveUpdateAPIView):
 '''
 mandar um patch request
 {
-	"validado": true
+	"validado": true 
 }
 '''

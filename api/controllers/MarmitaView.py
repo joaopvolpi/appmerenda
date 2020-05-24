@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAdminUser
-from ..permissions import QueroDoar
+from ..permissions import QueroDoar, Validado
 from ..serializers import MarmitaSerializer
 from ..models import Marmita
 from rest_framework.permissions import IsAuthenticated
@@ -10,7 +10,7 @@ User = get_user_model()
 from rest_framework.views import APIView
 
 class MarmitaList(generics.ListCreateAPIView):
-    permission_classes = [QueroDoar]
+    permission_classes = [QueroDoar, Validado]
     serializer_class = MarmitaSerializer
     queryset = Marmita.objects.all()
     
@@ -27,6 +27,6 @@ class MarmitaList(generics.ListCreateAPIView):
 
 
 class MarmitaDetail(generics.RetrieveDestroyAPIView):
-    permission_classes=[IsAuthenticated]
+    permission_classes=[Validado]
     queryset = Marmita.objects.all()
     serializer_class = MarmitaSerializer

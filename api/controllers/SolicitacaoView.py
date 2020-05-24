@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAdminUser
-from ..permissions import QueroDoar
+from ..permissions import QueroDoar, Validado
 from ..serializers import MarmitaSerializer, FullUserSerializer, MarmitaProntaSerializer
 from ..models import Marmita
 from rest_framework.permissions import IsAuthenticated
@@ -12,7 +12,7 @@ from rest_framework import status
 #from datetime import date
 
 class SolicitacaoView(APIView):
-
+    permission_classes=[Validado]
     def post(self, request, pk):
         '''
         marmitas_ja_solicitadas = Marmita.objects.filter(solicitacao=request.user)
@@ -29,6 +29,7 @@ class SolicitacaoView(APIView):
             return Response(data={ "message": "Marmita solicitada!" }, status=status.HTTP_200_OK)
 
 class ListaSolicitacaoView(APIView):
+    permission_classes=[Validado]
     def get(self, request):
         user = request.user
         lista_sols = user.solicitacao.all()            
