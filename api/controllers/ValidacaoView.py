@@ -1,7 +1,6 @@
 from rest_framework.permissions import IsAdminUser
 
 from ..serializers import FullUserSerializer
-from ..permissions import OwnerPraVer, AdminPodeTudoAutenticadoSoLe
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from django.contrib.auth import get_user_model

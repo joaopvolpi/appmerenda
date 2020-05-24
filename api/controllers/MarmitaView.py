@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAdminUser
-from ..permissions import OwnerPraVer, AdminPodeTudoAutenticadoSoLe, QueroDoar
+from ..permissions import QueroDoar
 from ..serializers import MarmitaSerializer
 from ..models import Marmita
 from rest_framework.permissions import IsAuthenticated

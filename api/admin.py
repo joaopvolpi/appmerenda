@@ -7,5 +7,6 @@ User = get_user_model()
 
 
 admin.site.register(User)
+admin.site.register(Marmita)
 
 

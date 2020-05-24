@@ -21,6 +21,11 @@ class MiniUserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['first_name', 'last_name', 'tel', 'endereco']
 
+class MiniUserSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'tel', 'foto_rosto']
+
 
 class MarmitaSerializer(serializers.ModelSerializer):
     usuario = MiniUserSerializer(read_only=True)
@@ -29,7 +34,7 @@ class MarmitaSerializer(serializers.ModelSerializer):
         exclude = ['solicitacao', 'solicitada']
 
 class MarmitaProntaSerializer(serializers.ModelSerializer):
-    solicitacao = MiniUserSerializer(read_only=True)
+    solicitacao = MiniUserSerializer2(read_only=True)
     
     class Meta:
         model = Marmita

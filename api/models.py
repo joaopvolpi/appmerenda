@@ -15,6 +15,7 @@ class Marmita(models.Model):
 
     solicitada = models.BooleanField(default=False)
     solicitacao = models.ForeignKey('api.User', related_name="solicitacao", on_delete=models.CASCADE, blank=True, null=True)
+    data_solicitacao = models.DateField(auto_now=False, blank=True, null=True)
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
@@ -44,15 +45,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
-
-'''
-Pra referenciar o user
-
-from django.db import models
-from django.conf import settings
-
-- O campo
-
-tutor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-'''
 
